@@ -8,8 +8,11 @@ public class PearsonUtils {
         int n = students.size();
         if (n == 0) return 0;
 
-        double sumX = 0, sumY = 0, sumXY = 0;
-        double sumX2 = 0, sumY2 = 0;
+        double sumX = 0;
+        double sumY = 0;
+        double sumXY = 0;
+        double sumX2 = 0;
+        double sumY2 = 0;
 
         for (Student s : students) {
             double x = s.studyHoursPerWeek;
