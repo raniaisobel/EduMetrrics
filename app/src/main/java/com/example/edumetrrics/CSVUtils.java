@@ -3,14 +3,13 @@ package com.example.edumetrrics;
 import android.content.Context;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
 import com.opencsv.CSVReader;
 
 public class CSVUtils {
 
-    public static List<Student> readStudentsFromCSV(Context context) {
-        List<Student> studentList = new ArrayList<>();
+    public static HashMap<String, Student> readStudentsFromCSV(Context context) {
+        HashMap<String, Student> studentMap = new HashMap<>();
 
         try {
             InputStream is = context.getResources().openRawResource(R.raw.student_performance);
@@ -36,13 +35,13 @@ public class CSVUtils {
                         Integer.parseInt(line[9])     // Attendance_Rate (%)
                 );
 
-                studentList.add(student);
+                studentMap.put(student.getId(), student); // Assuming getId() returns the Student_ID
             }
 
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        return studentList;
+        return studentMap;
     }
 }

@@ -9,24 +9,30 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
-    private List<Student> studentList;
+    private HashMap<String, Student> studentMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        studentList = CSVUtils.readStudentsFromCSV(this);
+        studentMap = CSVUtils.readStudentsFromCSV(this);
 
-        // Sort students by examScore descending
+        // convert hashmap to list for sorting
+        List<Student> studentList = new ArrayList<>(studentMap.values());
+
+        // sort by descending
         Collections.sort(studentList, (s1, s2) -> s2.examScore - s1.examScore);
 
-        // Get top 10
+        //getting top 10
         List<Student> top10 = studentList.subList(0, Math.min(10, studentList.size()));
 
         RecyclerView recyclerView = findViewById(R.id.recyclerViewTopStudents);
@@ -37,19 +43,13 @@ public class MainActivity extends AppCompatActivity {
         EditText searchInput = findViewById(R.id.editTextStudentId);
         searchButton.setOnClickListener(v -> {
             String id = searchInput.getText().toString().trim();
-            boolean found = false;
+            Student foundStudent = studentMap.get(id); // Directly access student by ID
 
-            for (Student s : studentList) {
-                if (s.id.equalsIgnoreCase(id)) {
-                    Intent intent = new Intent(MainActivity.this, StudentDetailsActivity.class);
-                    intent.putExtra("student_id", id);
-                    startActivity(intent);
-                    found = true;
-                    break;
-                }
-            }
-
-            if (!found) {
+            if (foundStudent != null) {
+                Intent intent = new Intent(MainActivity.this, StudentDetailsActivity.class);
+                intent.putExtra("student_id", id);
+                startActivity(intent);
+            } else {
                 Toast.makeText(MainActivity.this, "Student ID not found", Toast.LENGTH_SHORT).show();
             }
         });

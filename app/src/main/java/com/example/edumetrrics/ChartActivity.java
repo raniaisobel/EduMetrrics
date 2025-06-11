@@ -16,7 +16,7 @@ import java.util.List;
 
 public class ChartActivity extends AppCompatActivity {
 
-    private List<Student> studentList;
+    private HashMap<String, Student> studentMap;
     private BarChart chart;
 
     @Override
@@ -25,7 +25,7 @@ public class ChartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chart);
 
-        studentList = CSVUtils.readStudentsFromCSV(this);
+        studentMap = CSVUtils.readStudentsFromCSV(this);
         chart = findViewById(R.id.barChart);
 
         displayBarChart();
@@ -40,7 +40,8 @@ public class ChartActivity extends AppCompatActivity {
     private void displayBarChart() {
         HashMap<String, List<Integer>> grouped = new HashMap<>();
 
-        for (Student s : studentList) {
+        // iterates thru hashmap values
+        for (Student s : studentMap.values()) {
             grouped.putIfAbsent(s.preferredLearningStyle, new ArrayList<>());
             grouped.get(s.preferredLearningStyle).add(s.examScore);
         }

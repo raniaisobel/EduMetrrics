@@ -3,11 +3,13 @@ package com.example.edumetrrics;
 import android.os.Bundle;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
-import java.util.List;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class StudentDetailsActivity extends AppCompatActivity {
 
-    private List<Student> studentList;
+    private HashMap<String, Student> studentMap;
     private Student selectedStudent;
 
     @Override
@@ -16,16 +18,12 @@ public class StudentDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_details);
 
-        studentList = CSVUtils.readStudentsFromCSV(this);
+        studentMap = CSVUtils.readStudentsFromCSV(this);
 
         String studentId = getIntent().getStringExtra("student_id");
 
-        for (Student s : studentList) {
-            if (s.id.equalsIgnoreCase(studentId)) {
-                selectedStudent = s;
-                break;
-            }
-        }
+        // retrieve from hashmap
+        selectedStudent = studentMap.get(studentId);
 
         if (selectedStudent != null) {
             ((TextView) findViewById(R.id.textStudentId)).setText("ID: " + selectedStudent.id);
@@ -36,7 +34,8 @@ public class StudentDetailsActivity extends AppCompatActivity {
             ((TextView) findViewById(R.id.textExamScore)).setText("Exam Score: " + selectedStudent.examScore);
         }
 
-        double correlation = PearsonUtils.calculateCorrelation(studentList);
+        // calculate correlation using method
+        double correlation = PearsonUtils.calculateCorrelation(new ArrayList<>(studentMap.values()));
         ((TextView) findViewById(R.id.textCorrelation)).setText("Correlation (Study Time & Score): " + String.format("%.4f", correlation));
     }
 

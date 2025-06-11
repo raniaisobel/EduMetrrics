@@ -23,4 +23,8 @@ public class Student {
         this.examScore = examScore;
         this.attendanceRate = attendanceRate;
     }
+
+    public String getId() {
+        return id;
+    }
 }
