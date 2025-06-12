@@ -25,15 +25,15 @@ public class CSVUtils {
                 }
 
                 Student student = new Student(
-                        line[0],
-                        Integer.parseInt(line[1]),
-                        line[2],
-                        Integer.parseInt(line[3]),
-                        line[4],
-                        Integer.parseInt(line[5]),
-                        Integer.parseInt(line[6]),
-                        Integer.parseInt(line[7]),
-                        Integer.parseInt(line[8])
+                        line[0],                      // Student_ID
+                        Integer.parseInt(line[1]),    // Age
+                        line[2],                     // Gender
+                        Integer.parseInt(line[3]),    // Study_Hours_per_Week
+                        line[4],                     // Preferred_Learning_Style
+                        Integer.parseInt(line[5]),    // Online_Courses_Completed
+                        Integer.parseInt(line[7]),    // Assignment_Completion_Rate (%)
+                        Integer.parseInt(line[8]),    // Exam_Score (%)
+                        Integer.parseInt(line[9])     // Attendance_Rate (%)
                 );
 
                 studentList.add(student);
