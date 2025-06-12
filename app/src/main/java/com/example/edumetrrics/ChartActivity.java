@@ -37,7 +37,6 @@ public class ChartActivity extends AppCompatActivity {
         return true;
     }
 
-
     private void displayBarChart() {
         HashMap<String, List<Integer>> grouped = new HashMap<>();
 
@@ -62,7 +61,12 @@ public class ChartActivity extends AppCompatActivity {
         }
 
         BarDataSet dataSet = new BarDataSet(entries, "Avg Exam Score");
-        dataSet.setColors(Color.BLUE, Color.GREEN, Color.MAGENTA, Color.CYAN, Color.DKGRAY);
+        dataSet.setColors(
+                Color.parseColor("#D9CFC1"),
+                Color.parseColor("#767b91"),
+                Color.parseColor("#37371F"),
+                Color.parseColor("#412234")
+        );
         BarData barData = new BarData(dataSet);
         barData.setBarWidth(0.9f);
 
