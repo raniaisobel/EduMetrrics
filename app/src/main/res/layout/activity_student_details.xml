@@ -1,50 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollView2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
     android:background="@color/creamyWhite">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+
+    <TextView
+        android:id="@+id/textStudentId"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:text="ID: "
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/textAge"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5" />
 
-        <TextView android:id="@+id/textStudentId"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ID: " android:textSize="16sp" />
+    <TextView
+        android:id="@+id/textAge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Age: "
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/textGender"
+        app:layout_constraintStart_toStartOf="@+id/textStudentId"
+        app:layout_constraintTop_toBottomOf="@+id/textStudentId"
+        app:layout_constraintVertical_bias="0.5" />
 
-        <TextView android:id="@+id/textAge"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Age: " android:textSize="16sp" />
+    <TextView
+        android:id="@+id/textGender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="21dp"
+        android:text="Gender: "
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/textStudyHours"
+        app:layout_constraintStart_toStartOf="@+id/textAge"
+        app:layout_constraintTop_toBottomOf="@+id/textAge"
+        app:layout_constraintVertical_bias="0.5" />
 
-        <TextView android:id="@+id/textGender"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Gender: " android:textSize="16sp" />
+    <TextView
+        android:id="@+id/textStudyHours"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Study Hours/Week: "
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/textAssignments"
+        app:layout_constraintStart_toStartOf="@+id/textGender"
+        app:layout_constraintTop_toBottomOf="@+id/textGender"
+        app:layout_constraintVertical_bias="0.5" />
 
-        <TextView android:id="@+id/textStudyHours"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Study Hours/Week: " android:textSize="16sp" />
+    <TextView
+        android:id="@+id/textAssignments"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Assignments Completed: "
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/textExamScore"
+        app:layout_constraintEnd_toEndOf="@+id/textExamScore"
+        app:layout_constraintStart_toEndOf="@+id/textExamScore"
+        app:layout_constraintTop_toBottomOf="@+id/textStudyHours"
+        app:layout_constraintVertical_bias="0.5" />
 
-        <TextView android:id="@+id/textAssignments"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Assignments Completed: " android:textSize="16sp" />
+    <TextView
+        android:id="@+id/textExamScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:text="Exam Score: "
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/textCorrelation"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textAssignments"
+        app:layout_constraintVertical_bias="0.5" />
 
-        <TextView android:id="@+id/textExamScore"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Exam Score: " android:textSize="16sp" />
+    <TextView
+        android:id="@+id/textCorrelation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="Correlation: "
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/textExamScore"
+        app:layout_constraintTop_toBottomOf="@+id/textExamScore"
+        app:layout_constraintVertical_bias="0.5" />
 
-        <TextView android:id="@+id/textCorrelation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Correlation: " android:textSize="16sp"
-            android:layout_marginTop="16dp"
-            android:textStyle="bold" />
-    </LinearLayout>
-</ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
